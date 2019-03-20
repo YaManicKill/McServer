@@ -1,0 +1,19 @@
+{
+    "dbConfig": {
+      "host": "rethinkdb",
+      "port": 28015,
+      "dbName": "yanius",
+      "dbUser": "admin",
+      "dbPass": ""
+    },
+    "uploadPath": "upload",
+    "url": "https://files.yamanickill.com/",
+    "port": 56792,
+    "address": "0.0.0.0",
+    "trustedProxies": [
+      "127.0.0.1"
+    ],
+    "httpsSupport": false,
+    "saltRounds": 10
+  }
+  

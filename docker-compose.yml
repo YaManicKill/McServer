@@ -9,6 +9,7 @@ services:
       - ./nginx/conf.d:/etc/nginx/conf.d
     depends_on:
       - thelounge
+      - yanius
   thelounge:
     image: thelounge/thelounge:latest
     container_name: thelounge
@@ -17,3 +18,16 @@ services:
     restart: always
     volumes:
       - ./thelounge:/var/opt/thelounge
+  rethinkdb:
+    image: rethinkdb
+    container_name: rethinkdb
+    ports:
+      - "127.0.0.1:28015:28015"
+  yanius:
+    build: yanius
+    container_name: yanius
+    ports:
+      - "56792:56792"
+    depends_on:
+      - rethinkdb
+    tty: true
