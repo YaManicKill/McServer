@@ -1,0 +1,7 @@
+
+## The Lounge
+
+# Keys for web push, we don't want to share this
+thelounge/vapid.json
+# User files have keys for connecting to networks, we shouldn't share this
+thelounge/users/

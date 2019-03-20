@@ -6,4 +6,14 @@ services:
     - "80:80"
     - "443:443"
     volumes:
-      - ~/nginx:/etc/nginx/conf.d
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    depends_on:
+      - thelounge
+  thelounge:
+    image: thelounge/thelounge:latest
+    container_name: thelounge
+    ports:
+      - "127.0.0.1:9000:9000"
+    restart: always
+    volumes:
+      - ./thelounge:/var/opt/thelounge
