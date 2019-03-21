@@ -5,3 +5,8 @@
 thelounge/vapid.json
 # User files have keys for connecting to networks, we shouldn't share this
 thelounge/users/
+
+
+## RethinkDB
+
+rethinkdb/rethinkdb_data

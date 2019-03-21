@@ -23,6 +23,8 @@ services:
     container_name: rethinkdb
     ports:
       - "127.0.0.1:28015:28015"
+    volumes:
+      - ./rethinkdb:/data
   yanius:
     build: yanius
     container_name: yanius
