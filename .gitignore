@@ -10,3 +10,8 @@ thelounge/users/
 ## RethinkDB
 
 rethinkdb/rethinkdb_data
+
+
+## Let's Encrypt
+acme/certs
+acme/conf/credentials
