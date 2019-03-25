@@ -15,3 +15,13 @@ rethinkdb/rethinkdb_data
 ## Let's Encrypt
 acme/certs
 acme/conf/credentials
+
+## ZNC
+
+# Logs are generally sensitive, so we'll ignore all of that, they are in multiple differnet areas
+znc/moddata/log
+znc/users/*/moddata/log
+znc/users/*/networks/*/moddata/log
+
+# Obviously, we don't want to store nickserv passwords
+znc/users/*/networks/*/moddata/nickserv

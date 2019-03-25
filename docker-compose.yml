@@ -34,3 +34,9 @@ services:
     depends_on:
       - rethinkdb
     tty: true
+  znc:
+    image: znc
+    volumes:
+      - ./znc:/znc-data
+    ports:
+      - "127.0.0.1:5000:5000"
