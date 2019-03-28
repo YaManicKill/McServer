@@ -8,6 +8,7 @@ services:
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
       - ./acme/certs:/etc/letsencrypt
+      - ./nginx/data:/var/www
     depends_on:
       - thelounge
       - yanius
