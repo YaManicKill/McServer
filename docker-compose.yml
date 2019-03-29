@@ -12,6 +12,12 @@ services:
     depends_on:
       - thelounge
       - yanius
+    links:
+        - php
+  php:
+    image: php:7-fpm
+    volumes:
+      - ./nginx/data:/var/www
   thelounge:
     image: thelounge/thelounge:latest
     container_name: thelounge
