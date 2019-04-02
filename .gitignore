@@ -29,3 +29,7 @@ znc/users/*/networks/*/moddata/log
 
 # Obviously, we don't want to store nickserv passwords
 znc/users/*/networks/*/moddata/nickserv
+
+# Extras
+secrets.tar.gz
+sites.tar.gz
