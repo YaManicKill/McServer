@@ -8,6 +8,7 @@ apk add docker
 apk add py-pip build-base libffi-dev python2-dev openssl-dev sudo
 pip install --upgrade pip
 pip install docker-compose
+passwd -u username
 rc-update add docker boot
 service docker start
 
@@ -34,3 +35,5 @@ renewCommand = "docker run -it --rm --name certbot -v '${PWD}/certs:/etc/letsenc
 
 # Delete credential file for ssl cert, we no longer need it as certbot saved it
 rm acme/conf/credentials
+
+echo "Successfully installed. Now you should log on using your key, and set a decent password, just to be safe. You shouldn't need to use it for anything though."
