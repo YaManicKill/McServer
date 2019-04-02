@@ -20,7 +20,7 @@ cp ~/.ssh/authorized_keys ~al/.ssh/
 chown -R al:al ~al
 
 tar -xf secrets.tar.gz
-tar -xf sites.tar.gz nginx/data/
+tar -xf sites.tar.gz -C nginx/data/
 
 # Secure ssh
 sed -i 's/#PasswordAuthentication.*/PasswordAuthentication no/' /etc/ssh/sshd_config # Disable password login via ssh
