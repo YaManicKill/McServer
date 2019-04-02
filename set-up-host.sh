@@ -1,30 +1,42 @@
 # Script to set up the host
 # Should only ever be run once on a machine
 
-# WARNING: This still needs tested!!!!
-
-# Install docker
-apk add docker
-apk add py-pip build-base libffi-dev python2-dev openssl-dev sudo
-pip install --upgrade pip
-pip install docker-compose
-passwd -u username
-rc-update add docker boot
-service docker start
+# Install docker and docker compose
+apt-get update
+apt-get install -y \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg-agent \
+    software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+apt-get update
+apt-get install -y docker-ce docker-ce-cli containerd.io
+curl -L https://github.com/docker/compose/releases/download/1.18.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
+docker-compose --version
 
 # Create a new user
-adduser -D al
+adduser --disabled-password al --gecos ""
 echo 'al ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 mkdir ~al/.ssh
 cp ~/.ssh/authorized_keys ~al/.ssh/
 chown -R al:al ~al
 
-tar -xf secrets.tar.gz
+tar -xf secrets.tar.gz --strip-components=1
 tar -xf sites.tar.gz -C nginx/data/
 
 # Secure ssh
+sed -i 's/#UsePAM.*/UsePAM yes/' /etc/ssh/sshd_config # Allow login without password
 sed -i 's/#PasswordAuthentication.*/PasswordAuthentication no/' /etc/ssh/sshd_config # Disable password login via ssh
 sed -i 's/#PermitRootLogin.*/PermitRootLogin no/' /etc/ssh/sshd_config # Disable root login via ssh
+sed -i 's/PermitRootLogin.*/PermitRootLogin no/' /etc/ssh/sshd_config # Disable root login via ssh
+
+systemctl restart ssh
 
 # Get initial SSL certs
 docker run -it --rm --name certbot -v "${PWD}/acme/certs:/etc/letsencrypt" -v "${PWD}/acme/conf:/opt/certbot/conf" certbot/dns-digitalocean certonly --dns-digitalocean --dns-digitalocean-credentials conf/credentials -d *.yamanickill.com -d yamanickill.com -d mckinlay.me -d *.mckinlay.me -d 10people.co.uk -d *.10people.co.uk -d harvestseason.club -d *.harvestseason.club -d podcastdrivendev.com -d *.podcastdrivendev.com -d rantswithal.com -d *.rantswithal.com -d mckinlays.net -d *.mckinlays.net --server https://acme-v02.api.letsencrypt.org/directory -m "certbot@10people.co.uk" --agree-tos --no-eff-email
