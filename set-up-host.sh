@@ -30,7 +30,7 @@ sed -i 's/#PermitRootLogin.*/PermitRootLogin no/' /etc/ssh/sshd_config # Disable
 docker run -it --rm --name certbot -v "${PWD}/acme/certs:/etc/letsencrypt" -v "${PWD}/acme/conf:/opt/certbot/conf" certbot/dns-digitalocean certonly --dns-digitalocean --dns-digitalocean-credentials conf/credentials -d *.yamanickill.com -d yamanickill.com -d mckinlay.me -d *.mckinlay.me -d 10people.co.uk -d *.10people.co.uk -d harvestseason.club -d *.harvestseason.club -d podcastdrivendev.com -d *.podcastdrivendev.com -d rantswithal.com -d *.rantswithal.com -d mckinlays.net -d *.mckinlays.net --server https://acme-v02.api.letsencrypt.org/directory -m "certbot@10people.co.uk" --agree-tos --no-eff-email
 
 # Add ssl cert renew command to cron (currently set to every 7 days)
-renewCommand = "docker run -it --rm --name certbot -v '${PWD}/certs:/etc/letsencrypt' -v '${PWD}/conf:/opt/certbot/conf' certbot/dns-digitalocean renew"
+renewCommand="docker run -it --rm --name certbot -v '${PWD}/certs:/etc/letsencrypt' -v '${PWD}/conf:/opt/certbot/conf' certbot/dns-digitalocean renew"
 (crontab -l 2>/dev/null; echo "0 0 */7 * * $renewCommand") | crontab -
 
 # Delete credential file for ssl cert, we no longer need it as certbot saved it
