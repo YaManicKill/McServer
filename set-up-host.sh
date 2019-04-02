@@ -5,6 +5,9 @@
 
 # Install docker
 apk add docker
+apk add py-pip build-base libffi-dev python2-dev openssl-dev sudo
+pip install --upgrade pip
+pip install docker-compose
 rc-update add docker boot
 service docker start
 
