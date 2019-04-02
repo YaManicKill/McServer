@@ -23,7 +23,7 @@ sed -i 's/#PasswordAuthentication.*/PasswordAuthentication no/' /etc/ssh/sshd_co
 sed -i 's/#PermitRootLogin.*/PermitRootLogin no/' /etc/ssh/sshd_config # Disable root login via ssh
 
 # Get initial SSL certs
-docker run -it --rm --name certbot -v "${PWD}/acme/certs:/etc/letsencrypt" -v "${PWD}/acme/conf:/opt/certbot/conf" certbot/dns-digitalocean certonly --dns-digitalocean --dns-digitalocean-credentials conf/credentials -d *.yamanickill.com -d yamanickill.com -d mckinlay.me -d *.mckinlay.me -d 10people.co.uk -d *.10people.co.uk -d harvestseason.club -d *.harvestseason.club -d podcastdrivendev.com -d *.podcastdrivendev.com -d rantswithal.com -d *.rantswithal.com -d mckinlays.me -d *.mckinlays.me --server https://acme-v02.api.letsencrypt.org/directory -m "certbot@10people.co.uk" --agree-tos --no-eff-email
+docker run -it --rm --name certbot -v "${PWD}/acme/certs:/etc/letsencrypt" -v "${PWD}/acme/conf:/opt/certbot/conf" certbot/dns-digitalocean certonly --dns-digitalocean --dns-digitalocean-credentials conf/credentials -d *.yamanickill.com -d yamanickill.com -d mckinlay.me -d *.mckinlay.me -d 10people.co.uk -d *.10people.co.uk -d harvestseason.club -d *.harvestseason.club -d podcastdrivendev.com -d *.podcastdrivendev.com -d rantswithal.com -d *.rantswithal.com -d mckinlays.net -d *.mckinlays.net --server https://acme-v02.api.letsencrypt.org/directory -m "certbot@10people.co.uk" --agree-tos --no-eff-email
 
 # Add ssl cert renew command to cron (currently set to every 7 days)
 renewCommand = "docker run -it --rm --name certbot -v '${PWD}/certs:/etc/letsencrypt' -v '${PWD}/conf:/opt/certbot/conf' certbot/dns-digitalocean renew"
