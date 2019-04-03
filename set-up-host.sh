@@ -22,10 +22,14 @@ docker-compose --version
 
 # Create a new user
 adduser --disabled-password al --gecos ""
+adduser --disabled-password circleci --gecos ""
 echo 'al ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+echo 'circleci ALL=(ALL) NOPASSWD: /usr/bin/rsync' >> /etc/sudoers
 mkdir ~al/.ssh
+mkdir ~circleci/.ssh
 cp ~/.ssh/authorized_keys ~al/.ssh/
 chown -R al:al ~al
+chown -R circleci:circleci ~circleci
 
 tar -xf secrets.tar.gz --strip-components=1
 tar -xf sites.tar.gz -C nginx/data/
