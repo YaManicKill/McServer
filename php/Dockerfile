@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y \
 
 RUN echo "hostname=localhost.localdomain" > /etc/ssmtp/ssmtp.conf
 RUN echo "root=al@mckinlay.me" >> /etc/ssmtp/ssmtp.conf
-RUN echo "mailhub=maildev" >> /etc/ssmtp/ssmtp.conf
+RUN echo "mailhub=mail" >> /etc/ssmtp/ssmtp.conf
 RUN echo "FromLineOverride=YES" >> /etc/ssmtp/ssmtp.conf
 RUN echo "sendmail_path=sendmail -i -t" >> /usr/local/etc/php/conf.d/php-sendmail.ini
+RUN echo "localhost localhost.localdomain" >> /etc/hosts
