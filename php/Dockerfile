@@ -4,8 +4,14 @@ RUN apt-get update && apt-get install -y \
         libjpeg62-turbo-dev \
         libpng-dev \
         ssmtp \
+        mailutils \
+    && rm -rf /var/lib/apt/lists/* \
     && docker-php-ext-install -j$(nproc) iconv \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
-    && docker-php-ext-install -j$(nproc) gd \
-    && echo "FromLineOverride=YES" >> /etc/ssmtp/ssmtp.conf \
-    && echo 'sendmail_path = "/usr/sbin/ssmtp -t"' > /usr/local/etc/php/conf.d/mail.ini
+    && docker-php-ext-install -j$(nproc) gd
+
+RUN echo "hostname=localhost.localdomain" > /etc/ssmtp/ssmtp.conf
+RUN echo "root=al@mckinlay.me" >> /etc/ssmtp/ssmtp.conf
+RUN echo "mailhub=maildev" >> /etc/ssmtp/ssmtp.conf
+RUN echo "FromLineOverride=YES" >> /etc/ssmtp/ssmtp.conf
+RUN echo "sendmail_path=sendmail -i -t" >> /usr/local/etc/php/conf.d/php-sendmail.ini
