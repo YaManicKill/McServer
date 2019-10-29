@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-thelounge-theme-solarized@1.0.38:
-  version "1.0.38"
-  resolved "https://registry.yarnpkg.com/thelounge-theme-solarized/-/thelounge-theme-solarized-1.0.38.tgz#abdad1e4d5898f1471c0b02410f5c4c9f44a84f6"
-  integrity sha512-+SKSfObFQPvwZwxszv12+jfcJ9cmXqI7BP7UBXeIUBod0LIgMLt1gPYuvxczvgyLQ5fgeGw/vTPCICb1GNr1Lg==
+thelounge-theme-solarized@1.0.40:
+  version "1.0.40"
+  resolved "https://registry.yarnpkg.com/thelounge-theme-solarized/-/thelounge-theme-solarized-1.0.40.tgz#569b30ede8a3094b21bd14fcd8d4c7655ce5632d"
+  integrity sha512-1dKJMDYZObq4irgZu5cawN0DMPFgoHdKWAtE+NslUZuMJSf4myPmDbc87cD/iU+jn2SBC7LwuuNgQok1+V6vGA==
