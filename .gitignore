@@ -10,6 +10,13 @@ thelounge/vapid.json
 thelounge/users/
 # Logs are generally sensitive, so we'll ignore all of that
 thelounge/logs
+# Let's get rid of thelounge storage as well
+thelounge/storage
+# Ignore thelounge packages
+thelounge/packages/*
+# But not the package.json or yarn.lock
+!thelounge/packages/package.json
+!thelounge/packages/yarn.lock
 
 ## RethinkDB
 
