@@ -16,6 +16,8 @@ services:
       - php
   php:
     build: php
+    links:
+      - mail
     volumes:
       - ./nginx/data:/var/www
   thelounge:
@@ -47,3 +49,5 @@ services:
       - ./znc:/znc-data
     ports:
       - "127.0.0.1:5000:5000"
+  toolbox:
+    image: toolbox
