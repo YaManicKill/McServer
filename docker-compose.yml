@@ -16,8 +16,6 @@ services:
       - php
   php:
     build: php
-    links:
-      - mail
     volumes:
       - ./nginx/data:/var/www
   thelounge:
