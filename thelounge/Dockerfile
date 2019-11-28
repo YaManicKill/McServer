@@ -14,4 +14,4 @@ ENTRYPOINT ["yarn", "start"]
 
 RUN git clone https://github.com/thelounge/thelounge.git .
 RUN yarn
-RUN yarn build
+RUN NODE_ENV=production yarn build
