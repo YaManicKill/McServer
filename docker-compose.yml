@@ -49,3 +49,5 @@ services:
       - "127.0.0.1:5000:5000"
   toolbox:
     image: toolbox
+    ports:
+      - "3000:3000"
