@@ -12,6 +12,8 @@ thelounge/users/
 thelounge/logs
 # Let's get rid of thelounge storage as well
 thelounge/storage
+# And uploads
+thelounge/uploads
 # Ignore thelounge packages
 thelounge/packages/*
 # But not the package.json or yarn.lock
@@ -26,6 +28,8 @@ rethinkdb/rethinkdb_data
 ## Let's Encrypt
 acme/certs
 acme/conf/credentials
+acme/acme/certs
+acme/acme/credentials
 
 ## ZNC
 
