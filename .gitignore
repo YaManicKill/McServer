@@ -20,6 +20,9 @@ thelounge/packages/*
 !thelounge/packages/package.json
 !thelounge/packages/yarn.lock
 
+# Ignore certificates
+thelounge/certificates
+
 ## RethinkDB
 
 rethinkdb/rethinkdb_data
