@@ -2,6 +2,6 @@
 	"private": true,
 	"description": "Packages for The Lounge. All packages in node_modules directory will be automatically loaded.",
 	"dependencies": {
-		"thelounge-theme-solarized": "1.1.7"
+		"thelounge-theme-solarized": "1.1.9"
 	}
 }
