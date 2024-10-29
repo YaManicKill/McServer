@@ -1,4 +1,4 @@
-FROM node:21
+FROM node:22
 
 ENV THELOUNGE_HOME "/var/opt/thelounge"
 VOLUME "${THELOUNGE_HOME}"
